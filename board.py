@@ -1,6 +1,14 @@
 from abc import ABC, abstractmethod
 import pygame
 
+pygame.init()
+
+
+run = True
+x = 800
+y = 600
+screen = pygame.display.set_mode((x, y))
+
 
 class ChessPiece:
     def __init__(self, color, type, x, y, image, position):
@@ -24,7 +32,14 @@ class ChessPiece:
         self.position = new_pos
 
 
-class Pawn(ChessPiece):
+class Board:
+    pass
+
+
+class Pawn():
+    def __init__(self, image):
+        self.image = pygame.image.load("chess_resourses\\pawn.png")
+
     def get_image(self):
         if self.color == "White":
             image = pygame.image.load(
@@ -48,11 +63,14 @@ class Pawn(ChessPiece):
 
         return can_move
 
+    def pawn_set(self):
+        screen.blit(self.image, (400, 300))
+
     # Return P for white pawns, p for black pawns
 
 
 class Rook(ChessPiece):
-    def get_image(self):
+    def get_image(self, image):
         if self.color == "White":
             image = pygame.image.load(
                 "chess_resourses\\rook.png").convert_alpha()
@@ -110,6 +128,12 @@ class Board:
     # Import abc for abstract base class
 
 # Parent class for all chess pieces
+
+
+while run:
+    Pawn.pawn_set()
+
+    pygame.display.flip()
 
 
 class ChessPiece(ABC):
