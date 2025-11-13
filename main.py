@@ -1,8 +1,8 @@
 import pygame
 import sys
 from sounds import bgm_1
-from board import *
 # 初始化
+
 pygame.init()
 
 # 设置窗口
