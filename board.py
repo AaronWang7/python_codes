@@ -1,5 +1,6 @@
 # Chess Board
 import pygame
+from abc import ABC, abstractmethod
 
 pygame.init()
 
@@ -9,11 +10,11 @@ x = 800
 y = 600
 screen = pygame.display.set_mode((x, y))
 pygame.display.set_caption("Chess Board")
-back_ground = pygame.image.load("chess_resourses\\board.png")
-background = pygame.transform.scale(back_ground, (800, 600))
+# back_ground = pygame.image.load("chess_resourses\\board.png")
+# background = pygame.transform.scale(back_ground, (800, 600))
 
 
-class ChessPiece:
+class ChessPiece(ABC):
     def __init__(self, color, type, x, y, image, position):
         self.color = color
         self.type = type
@@ -36,8 +37,12 @@ class ChessPiece:
 
 
 class Pawn(ChessPiece):
-    def __init__(self):
-        pass
+
+    def __init__(self, image, color, x, y):
+        self.image = pygame.image.load(image)
+        self.color = color
+        self.x = x
+        self.y = y
 
     def get_image(self):
         if self.color == "White":
@@ -46,7 +51,7 @@ class Pawn(ChessPiece):
             self.image = pygame.image.load("chess_resourses\\pawn1.png")
 
     def pawn_set(self):
-        screen.blit(self.image, (300, 300))
+        screen.blit(self.image, (x, y))
 
 
 class Board:
@@ -56,11 +61,12 @@ class Board:
         self.y = y
 
     def board_set(self):
-        screen.blit(background, (0, 0))
+        screen.blit(self.board, (self.x, self.y))
 
 
+board = Board(0, 0, 0)
+pawn = Pawn(0, "White", 300, 300)
 while run:
-    Board.board_set(background)
-    Pawn.pawn_set()
-
+    board.board_set()
+    pawn.pawn_set()
     pygame.display.flip()
