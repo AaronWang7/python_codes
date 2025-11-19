@@ -36,37 +36,74 @@ class ChessPiece(ABC):
         self.position = new_pos
 
 
-class Pawn(ChessPiece):
+class WhitePawn(ChessPiece):
 
-    def __init__(self, image, color, x, y):
-        self.image = pygame.image.load(image)
-        self.color = color
+    def __init__(self, white_pawn, x, y):
+        # self.image = pygame.image.load(image)
         self.x = x
         self.y = y
+        self.white_pawn = pygame.image.load("chess_resourses\\pawn.png")
+        self.whitep_transfrom = pygame.transform.scale(
+            self.white_pawn, (100, 75))
 
-    def get_image(self):
-        if self.color == "White":
-            self.image = pygame.image.load("chess_resourses\\pawn.png")
-        else:
-            self.image = pygame.image.load("chess_resourses\\pawn1.png")
+    def pawn1_set(self):
+        screen.blit(self.whitep_transfrom, (self.x, self.y))
 
-    def pawn_set(self):
-        screen.blit(self.image, (x, y))
+
+class BlackPawn(ChessPiece):
+
+    def __init__(self, black_pawn, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_pawn = pygame.image.load("chess_resourses\\pawn1.png")
+        self.blackp_transfrom = pygame.transform.scale(
+            self.black_pawn, (100, 75))
+
+    def pawn2_set(self):
+        screen.blit(self.blackp_transfrom, (self.x, self.y))
 
 
 class Board:
     def __init__(self, board, x, y):
         self.board = pygame.image.load("chess_resourses\\board.png")
+        self.board_transfrom = pygame.transform.scale(self.board, (800, 600))
         self.x = x
         self.y = y
 
     def board_set(self):
-        screen.blit(self.board, (self.x, self.y))
+        screen.blit(self.board_transfrom, (self.x, self.y))
 
 
-board = Board(0, 0, 0)
-pawn = Pawn(0, "White", 300, 300)
-while run:
-    board.board_set()
-    pawn.pawn_set()
-    pygame.display.flip()
+board = Board(0, x=0, y=0)
+# White Pawns
+white_pawns = []
+pawn_x = 0
+for i in range(8):
+    xx = (pawn_x)
+    pawn_x = pawn_x + 100
+    yy = 70
+    white_pawns.append(WhitePawn(0, xx, yy))
+    white_p = WhitePawn(0, xx, yy)
+    print(xx, yy)
+# Black Pawns
+black_pawns = []
+pawn_x = 0
+for i in range(8):
+    xx = (pawn_x)
+    pawn_x = pawn_x + 100
+    yy = 445
+    black_pawns.append(BlackPawn(0, xx, yy))
+    black_p = BlackPawn(0, xx, yy)
+    print(xx, yy)
+
+
+# pawn = Pawn(0, "White", 300, 300)
+def run_board():
+    while run:
+        board.board_set()
+        for white_p in white_pawns:
+            white_p.pawn1_set()
+        for black_p in black_pawns:
+            black_p.pawn2_set()
+        pygame.display.flip()

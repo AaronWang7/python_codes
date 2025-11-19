@@ -1,6 +1,7 @@
 import pygame
 import sys
-from sounds import bgm_1
+from sounds import *
+from board import *
 
 
 pygame.init()
@@ -16,7 +17,8 @@ start = pygame.image.load("chess_resourses/image copy.png").convert_alpha()
 start.set_colorkey((255, 255, 255))
 
 start_t = pygame.transform.scale(start, (150, 100))
-bgm_1()
+back_groundmusic1 = True
+back_groundmusic2 = False
 start_width = start_t.get_width()
 start_hight = start_t.get_height()
 start_x = SCREEN_X/2 - start_width/2
@@ -31,22 +33,27 @@ while running:
     mouse_pos = pygame.mouse.get_pos()
     screen.blit(background, (0, 0))
     screen.blit(start_t, (start_x, start_y))
-    
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.MOUSEBUTTONDOWN: 
+        if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             print("Mouse clicked at:", x, y)
             if image_rect.collidepoint(mouse_pos) and clicked == False:
                 print("yes")
                 clicked = True
+                run_board()
+                back_groundmusic1 = False
+                bgm_2()
+
             else:
                 pass
 
-    
+    if back_groundmusic1 == True:
+        bgm_1()
+
     pygame.display.update()
 
 pygame.quit()
 sys.exit()
-
