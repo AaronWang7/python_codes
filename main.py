@@ -1,11 +1,11 @@
 import pygame
 import sys
 from sounds import bgm_1
-# 初始化
+
 
 pygame.init()
 
-# 设置窗口
+
 SCREEN_X = 800
 SCREEN_Y = 600
 screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
@@ -29,13 +29,13 @@ clicked = False
 running = True
 while running:
     mouse_pos = pygame.mouse.get_pos()
-    screen.blit(background, (0, 0))  # (0,0) 是左上角坐标
+    screen.blit(background, (0, 0))
     screen.blit(start_t, (start_x, start_y))
-    # 处理事件
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.MOUSEBUTTONDOWN:  # 鼠标按下
+        if event.type == pygame.MOUSEBUTTONDOWN: 
             x, y = event.pos
             print("Mouse clicked at:", x, y)
             if image_rect.collidepoint(mouse_pos) and clicked == False:
@@ -44,8 +44,9 @@ while running:
             else:
                 pass
 
-    # 更新屏幕
+    
     pygame.display.update()
 
 pygame.quit()
 sys.exit()
+
