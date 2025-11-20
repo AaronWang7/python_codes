@@ -1,1 +1,1 @@
-pygame.init()
+bishop2_set

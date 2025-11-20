@@ -10,7 +10,7 @@ def bgm_1():
 
 def bgm_2():
     mixer.music.load(
-        "music/Suspenseful Investigation-Main-version-yoyosound.com.wav")
+        "music\\Suspenseful.wav")
     mixer.music.play(-1)
 
 

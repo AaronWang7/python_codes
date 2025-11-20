@@ -5,7 +5,6 @@ from abc import ABC, abstractmethod
 pygame.init()
 
 
-run = True
 x = 800
 y = 600
 screen = pygame.display.set_mode((x, y))
@@ -64,6 +63,34 @@ class BlackPawn(ChessPiece):
         screen.blit(self.blackp_transfrom, (self.x, self.y))
 
 
+class WhiteBishop(ChessPiece):
+
+    def __init__(self, white_bishop, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.white_bishop = pygame.image.load("chess_resourses\\bishop.png")
+        self.whiteb_transfrom = pygame.transform.scale(
+            self.white_bishop, (100, 75))
+
+    def bishop1_set(self):
+        screen.blit(self.whiteb_transfrom, (self.x, self.y))
+
+
+class BlackBishop(ChessPiece):
+
+    def __init__(self, black_bishop, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_bishop = pygame.image.load("chess_resourses\\bishop1.png")
+        self.blackb_transfrom = pygame.transform.scale(
+            self.black_bishop, (100, 75))
+
+    def bishop2_set(self):
+        screen.blit(self.blackb_transfrom, (self.x, self.y))
+
+
 class Board:
     def __init__(self, board, x, y):
         self.board = pygame.image.load("chess_resourses\\board.png")
@@ -73,37 +100,3 @@ class Board:
 
     def board_set(self):
         screen.blit(self.board_transfrom, (self.x, self.y))
-
-
-board = Board(0, x=0, y=0)
-# White Pawns
-white_pawns = []
-pawn_x = 0
-for i in range(8):
-    xx = (pawn_x)
-    pawn_x = pawn_x + 100
-    yy = 70
-    white_pawns.append(WhitePawn(0, xx, yy))
-    white_p = WhitePawn(0, xx, yy)
-    print(xx, yy)
-# Black Pawns
-black_pawns = []
-pawn_x = 0
-for i in range(8):
-    xx = (pawn_x)
-    pawn_x = pawn_x + 100
-    yy = 445
-    black_pawns.append(BlackPawn(0, xx, yy))
-    black_p = BlackPawn(0, xx, yy)
-    print(xx, yy)
-
-
-# pawn = Pawn(0, "White", 300, 300)
-def run_board():
-    while run:
-        board.board_set()
-        for white_p in white_pawns:
-            white_p.pawn1_set()
-        for black_p in black_pawns:
-            black_p.pawn2_set()
-        pygame.display.flip()

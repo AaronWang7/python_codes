@@ -1,7 +1,7 @@
 import pygame
 import sys
 from sounds import *
-from board import *
+from game import *
 
 
 pygame.init()
@@ -24,6 +24,9 @@ start_hight = start_t.get_height()
 start_x = SCREEN_X/2 - start_width/2
 start_y = SCREEN_Y/2 - start_hight/2
 image_rect = start_t.get_rect(topleft=(start_x, start_y))
+pos_front = pygame.font.Font('freesansbold.ttf', 32)
+
+bgm_1()
 
 clicked = False
 
@@ -40,18 +43,17 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
             print("Mouse clicked at:", x, y)
+            score_display = pos_front.render(
+                f"Score: {x, y}", True, (255, 255, 255))
             if image_rect.collidepoint(mouse_pos) and clicked == False:
                 print("yes")
                 clicked = True
                 run_board()
-                back_groundmusic1 = False
-                bgm_2()
+
+                clicked = False
 
             else:
                 pass
-
-    if back_groundmusic1 == True:
-        bgm_1()
 
     pygame.display.update()
 
