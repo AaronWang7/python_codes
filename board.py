@@ -24,183 +24,188 @@ class ChessPiece(ABC):
         self.black_pieces = []
         self.position = position
 
-    def can_move(self, new_pos):
+    def can_move_to(self, new_pos):
+        pass
+
+    def get_symbol(self):
         pass
 
     def get_position(self):
         return self.position
 
-    # Change the position
     def set_position(self, new_pos):
         self.position = new_pos
 
 
-# class WhitePawn(ChessPiece):
+class WhitePawn(ChessPiece):
 
-#     def __init__(self, white_pawn, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.white_pawn = pygame.image.load("chess_resourses\\pawn.png")
-#         self.whitep_transfrom = pygame.transform.scale(
-#             self.white_pawn, (100, 75))
+    def __init__(self, white_pawn, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.white_pawn = pygame.image.load("chess_resourses\\pawn.png")
+        self.whitep_transfrom = pygame.transform.scale(
+            self.white_pawn, (100, 75))
 
-#     def pawn1_set(self):
-#         screen.blit(self.whitep_transfrom, (self.x, self.y))
+    def pawn1_set(self):
+        screen.blit(self.whitep_transfrom, (self.x, self.y))
 
-
-# class BlackPawn(ChessPiece):
-
-#     def __init__(self, black_pawn, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.black_pawn = pygame.image.load("chess_resourses\\pawn1.png")
-#         self.blackp_transfrom = pygame.transform.scale(
-#             self.black_pawn, (100, 75))
-
-#     def pawn2_set(self):
-#         screen.blit(self.blackp_transfrom, (self.x, self.y))
+    def can_move(self, new_pos=[]):
+        pass
 
 
-# class WhiteBishop(ChessPiece):
+class BlackPawn(ChessPiece):
 
-#     def __init__(self, white_bishop, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.white_bishop = pygame.image.load("chess_resourses\\bishop.png")
-#         self.whiteb_transfrom = pygame.transform.scale(
-#             self.white_bishop, (100, 75))
+    def __init__(self, black_pawn, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_pawn = pygame.image.load("chess_resourses\\pawn1.png")
+        self.blackp_transfrom = pygame.transform.scale(
+            self.black_pawn, (100, 75))
 
-#     def bishop1_set(self):
-#         screen.blit(self.whiteb_transfrom, (self.x, self.y))
-
-
-# class BlackBishop(ChessPiece):
-
-#     def __init__(self, black_bishop, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.black_bishop = pygame.image.load("chess_resourses\\bishop1.png")
-#         self.blackb_transfrom = pygame.transform.scale(
-#             self.black_bishop, (100, 75))
-
-#     def bishop2_set(self):
-#         screen.blit(self.blackb_transfrom, (self.x, self.y))
+    def pawn2_set(self):
+        screen.blit(self.blackp_transfrom, (self.x, self.y))
 
 
-# class WhiteRook(ChessPiece):
+class WhiteBishop(ChessPiece):
 
-#     def __init__(self, white_rook, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.white_rook = pygame.image.load("chess_resourses\\rook.png")
-#         self.whiter_transfrom = pygame.transform.scale(
-#             self.white_rook, (100, 75))
+    def __init__(self, white_bishop, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.white_bishop = pygame.image.load("chess_resourses\\bishop.png")
+        self.whiteb_transfrom = pygame.transform.scale(
+            self.white_bishop, (100, 75))
 
-#     def rook1_set(self):
-#         screen.blit(self.whiter_transfrom, (self.x, self.y))
-
-
-# class BlackRook(ChessPiece):
-
-#     def __init__(self, black_rook, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.black_rook = pygame.image.load("chess_resourses\\rook1.png")
-#         self.blackr_transfrom = pygame.transform.scale(
-#             self.black_rook, (100, 75))
-
-#     def rook2_set(self):
-#         screen.blit(self.blackr_transfrom, (self.x, self.y))
+    def bishop1_set(self):
+        screen.blit(self.whiteb_transfrom, (self.x, self.y))
 
 
-# class WhiteKnight(ChessPiece):
+class BlackBishop(ChessPiece):
 
-#     def __init__(self, white_knight, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.white_knight = pygame.image.load("chess_resourses\\knight.png")
-#         self.whitekn_transfrom = pygame.transform.scale(
-#             self.white_knight, (100, 75))
+    def __init__(self, black_bishop, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_bishop = pygame.image.load("chess_resourses\\bishop1.png")
+        self.blackb_transfrom = pygame.transform.scale(
+            self.black_bishop, (100, 75))
 
-#     def knight1_set(self):
-#         screen.blit(self.whitekn_transfrom, (self.x, self.y))
-
-
-# class BlackKnight(ChessPiece):
-
-#     def __init__(self, black_knight, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.black_knight = pygame.image.load("chess_resourses\\knight1.png")
-#         self.blackkn_transfrom = pygame.transform.scale(
-#             self.black_knight, (100, 75))
-
-#     def knight2_set(self):
-#         screen.blit(self.blackkn_transfrom, (self.x, self.y))
+    def bishop2_set(self):
+        screen.blit(self.blackb_transfrom, (self.x, self.y))
 
 
-# class WhiteKing(ChessPiece):
+class WhiteRook(ChessPiece):
 
-#     def __init__(self, white_king, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.white_king = pygame.image.load("chess_resourses\\king.png")
-#         self.whitek_transfrom = pygame.transform.scale(
-#             self.white_king, (100, 75))
+    def __init__(self, white_rook, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.white_rook = pygame.image.load("chess_resourses\\rook.png")
+        self.whiter_transfrom = pygame.transform.scale(
+            self.white_rook, (100, 75))
 
-#     def king1_set(self):
-#         screen.blit(self.whitek_transfrom, (self.x, self.y))
-
-
-# class BlackKing(ChessPiece):
-
-#     def __init__(self, black_king, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.black_king = pygame.image.load("chess_resourses\\king1.png")
-#         self.blackk_transfrom = pygame.transform.scale(
-#             self.black_king, (100, 75))
-
-#     def king2_set(self):
-#         screen.blit(self.blackk_transfrom, (self.x, self.y))
+    def rook1_set(self):
+        screen.blit(self.whiter_transfrom, (self.x, self.y))
 
 
-# class WhiteQueen(ChessPiece):
+class BlackRook(ChessPiece):
 
-#     def __init__(self, white_queen, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.white_queen = pygame.image.load("chess_resourses\\queen.png")
-#         self.whiteq_transfrom = pygame.transform.scale(
-#             self.white_queen, (100, 75))
+    def __init__(self, black_rook, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_rook = pygame.image.load("chess_resourses\\rook1.png")
+        self.blackr_transfrom = pygame.transform.scale(
+            self.black_rook, (100, 75))
 
-#     def queen1_set(self):
-#         screen.blit(self.whiteq_transfrom, (self.x, self.y))
+    def rook2_set(self):
+        screen.blit(self.blackr_transfrom, (self.x, self.y))
 
 
-# class BlackQueen(ChessPiece):
+class WhiteKnight(ChessPiece):
 
-#     def __init__(self, black_queen, x, y):
-#         # self.image = pygame.image.load(image)
-#         self.x = x
-#         self.y = y
-#         self.black_queen = pygame.image.load("chess_resourses\\queen1.png")
-#         self.blackq_transfrom = pygame.transform.scale(
-#             self.black_queen, (100, 75))
+    def __init__(self, white_knight, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.white_knight = pygame.image.load("chess_resourses\\knight.png")
+        self.whitekn_transfrom = pygame.transform.scale(
+            self.white_knight, (100, 75))
 
-#     def queen2_set(self):
-#         screen.blit(self.blackq_transfrom, (self.x, self.y))
+    def knight1_set(self):
+        screen.blit(self.whitekn_transfrom, (self.x, self.y))
+
+
+class BlackKnight(ChessPiece):
+
+    def __init__(self, black_knight, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_knight = pygame.image.load("chess_resourses\\knight1.png")
+        self.blackkn_transfrom = pygame.transform.scale(
+            self.black_knight, (100, 75))
+
+    def knight2_set(self):
+        screen.blit(self.blackkn_transfrom, (self.x, self.y))
+
+
+class WhiteKing(ChessPiece):
+
+    def __init__(self, white_king, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.white_king = pygame.image.load("chess_resourses\\king.png")
+        self.whitek_transfrom = pygame.transform.scale(
+            self.white_king, (100, 75))
+
+    def king1_set(self):
+        screen.blit(self.whitek_transfrom, (self.x, self.y))
+
+
+class BlackKing(ChessPiece):
+
+    def __init__(self, black_king, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_king = pygame.image.load("chess_resourses\\king1.png")
+        self.blackk_transfrom = pygame.transform.scale(
+            self.black_king, (100, 75))
+
+    def king2_set(self):
+        screen.blit(self.blackk_transfrom, (self.x, self.y))
+
+
+class WhiteQueen(ChessPiece):
+
+    def __init__(self, white_queen, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.white_queen = pygame.image.load("chess_resourses\\queen.png")
+        self.whiteq_transfrom = pygame.transform.scale(
+            self.white_queen, (100, 75))
+
+    def queen1_set(self):
+        screen.blit(self.whiteq_transfrom, (self.x, self.y))
+
+
+class BlackQueen(ChessPiece):
+
+    def __init__(self, black_queen, x, y):
+        # self.image = pygame.image.load(image)
+        self.x = x
+        self.y = y
+        self.black_queen = pygame.image.load("chess_resourses\\queen1.png")
+        self.blackq_transfrom = pygame.transform.scale(
+            self.black_queen, (100, 75))
+
+    def queen2_set(self):
+        screen.blit(self.blackq_transfrom, (self.x, self.y))
 
 
 class Board:
@@ -214,45 +219,52 @@ class Board:
         screen.blit(self.board_transfrom, (self.x, self.y))
 
 
-class Pawn(ChessPiece):
-    def __init__(self, x, y):
-       # self.image = pygame.image.load(image)
-        self.x = x
-        self.y = y
-        self.white_pawn = pygame.image.load("chess_resourses\\pawn.png")
-        self.black_pawn = pygame.image.load("chess_resourses\\pawn1.png")
-        self.whitep_transfrom = pygame.transform.scale(
-            self.white_pawn, (100, 75))
-        self.blackp_transfrom = pygame.transform.scale(
-            self.black_pawn, (100, 75))
+class ChessGame:
+    def __init__(self):
+        # Lists to store pieces
+        self.white_pieces = []
+        self.black_pieces = []
+        # Setup the board
+        self.setup_pieces()
 
-    def get_color(self):
-        return self.color
+    # Put all pieces in starting positions
+    def setup_pieces(self):
+        # Create white pieces
+        self.white_pieces.append(WhiteRook("White", "A1"))
+        self.white_pieces.append(WhiteKnight("White", "B1"))
+        self.white_pieces.append(WhiteBishop("White", "C1"))
+        self.white_pieces.append(WhiteQueen("White", "D1"))
+        self.white_pieces.append(WhiteKing("White", "E1"))
+        self.white_pieces.append(WhiteBishop("White", "F1"))
+        self.white_pieces.append(WhiteKnight("White", "G1"))
+        self.white_pieces.append(WhiteRook("White", "H1"))
 
-    def pawn1_set(self):
-        screen.blit(self.whitep_transfrom, (self.x, self.y))
+        # Create white pawns
+        self.white_pieces.append(WhitePawn("White", "A2"))
+        self.white_pieces.append(WhitePawn("White", "B2"))
+        self.white_pieces.append(WhitePawn("White", "C2"))
+        self.white_pieces.append(WhitePawn("White", "D2"))
+        self.white_pieces.append(WhitePawn("White", "E2"))
+        self.white_pieces.append(WhitePawn("White", "F2"))
+        self.white_pieces.append(WhitePawn("White", "G2"))
+        self.white_pieces.append(WhitePawn("White", "H2"))
 
-    def pawn2_set(self):
-        screen.blit(self.blackp_transfrom, (self.x, self.y))
+        # Create black pieces
+        self.black_pieces.append(BlackRook("Black", "A8"))
+        self.black_pieces.append(BlackKnight("Black", "B8"))
+        self.black_pieces.append(BlackBishop("Black", "C8"))
+        self.black_pieces.append(BlackQueen("Black", "D8"))
+        self.black_pieces.append(BlackKing("Black", "E8"))
+        self.black_pieces.append(BlackBishop("Black", "F8"))
+        self.black_pieces.append(BlackKnight("Black", "G8"))
+        self.black_pieces.append(BlackRook("Black", "H8"))
 
-
-class Bishop(ChessPiece):
-    def __init__(self, x, y):
-       # self.image = pygame.image.load(image)
-        self.x = x
-        self.y = y
-        self.white_bishop = pygame.image.load("chess_resourses\\bishop.png")
-        self.black_bishop = pygame.image.load("chess_resourses\\bishop1.png")
-        self.whiteb_transfrom = pygame.transform.scale(
-            self.white_bishop, (100, 75))
-        self.blackb_transfrom = pygame.transform.scale(
-            self.black_bishop, (100, 75))
-
-    def get_color(self):
-        return self.color
-
-    def bishop1_set(self):
-        screen.blit(self.whiteb_transfrom, (self.x, self.y))
-
-    def bishop2_set(self):
-        screen.blit(self.blackb_transfrom, (self.x, self.y))
+        # Create black pawns
+        self.black_pieces.append(BlackPawn("Black", "A7"))
+        self.black_pieces.append(BlackPawn("Black", "B7"))
+        self.black_pieces.append(BlackPawn("Black", "C7"))
+        self.black_pieces.append(BlackPawn("Black", "D7"))
+        self.black_pieces.append(BlackPawn("Black", "E7"))
+        self.black_pieces.append(BlackPawn("Black", "F7"))
+        self.black_pieces.append(BlackPawn("Black", "G7"))
+        self.black_pieces.append(BlackPawn("Black", "H7"))
