@@ -9,8 +9,6 @@ x = 800
 y = 600
 screen = pygame.display.set_mode((x, y))
 pygame.display.set_caption("Chess Board")
-# back_ground = pygame.image.load("chess_resourses\\board.png")
-# background = pygame.transform.scale(back_ground, (800, 600))
 
 
 class ChessPiece(ABC):
@@ -214,9 +212,29 @@ class Board:
         self.board_transfrom = pygame.transform.scale(self.board, (800, 600))
         self.x = x
         self.y = y
+        self.board_x = self.x
+        self.board_y = self.y
 
     def board_set(self):
         screen.blit(self.board_transfrom, (self.x, self.y))
+
+    def board_get(self):
+        if self.board_x <= 100 and self.board_y <= 75:
+            return "A8"
+        elif self.board_x <= 200 and self.board_y <= 75:
+            return "B8"
+        elif self.board_x <= 300 and self.board_y <= 75:
+            return "C8"
+        elif self.board_x <= 400 and self.board_y <= 75:
+            return "D8"
+        elif self.board_x <= 500 and self.board_y <= 75:
+            return "E8"
+        elif self.board_x <= 600 and self.board_y <= 75:
+            return "F8"
+        elif self.board_x <= 700 and self.board_y <= 75:
+            return "G8"
+        elif self.board_x <= 800 and self.board_y <= 75:
+            return "H8"
 
 
 class ChessGame:
@@ -268,3 +286,9 @@ class ChessGame:
         self.black_pieces.append(BlackPawn("Black", "F7"))
         self.black_pieces.append(BlackPawn("Black", "G7"))
         self.black_pieces.append(BlackPawn("Black", "H7"))
+
+    def get_piece_at(self, position):
+        for piece in self.white_pieces + self.black_pieces:
+            if piece.get_position() == position:
+                return piece
+        return None

@@ -49,7 +49,6 @@ while running:
                 print("yes")
                 clicked = True
                 run_board()
-
                 clicked = False
 
             else:

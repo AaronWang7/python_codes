@@ -132,19 +132,9 @@ for i in range(1):
 
 
 def run_board():
-
     bgm_2()
     run = True
     while run:
-        # board.board_set()
-        # for white_p in white_pawns:
-        #     white_p.pawn1_set()
-        # for black_p in black_pawns:
-        #     black_p.pawn2_set()
-        # for white_b in white_bishops:
-        #     white_b.bishop1_set()
-        # for black_b in black_bishops:
-        #     black_b.bishop2_set()
         board.board_set()
         for white_p in white_pawns:
             white_p.pawn1_set()
@@ -174,5 +164,14 @@ def run_board():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                # Not working
+                print("Mouse clicked at:", x, y)
+                if board.board_get():
+                    board.board_x = x
+                    board.board_y = y
+                    print(board.board_get())
+                    print(board.board_x, board.board_y)
+                # Check if clicked on any pieces
         pygame.display.flip()
