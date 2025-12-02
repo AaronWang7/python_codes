@@ -1,4 +1,5 @@
 # Game Play
+import time
 from board import *
 from sounds import *
 board = Board(0, x=0, y=0)
@@ -134,6 +135,7 @@ for i in range(1):
 def run_board():
     bgm_2()
     run = True
+    clicked = False
     while run:
         board.board_set()
         for white_p in white_pawns:
@@ -167,11 +169,23 @@ def run_board():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
                 # Not working
-                print("Mouse clicked at:", x, y)
-                if board.board_get():
-                    board.board_x = x
-                    board.board_y = y
-                    print(board.board_get())
-                    print(board.board_x, board.board_y)
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    print("Mouse clicked at:", x, y)
+                    print("Moving to", board.board_get())
+                    if board.board_get():
+                        board.board_x = x
+                        board.board_y = y
+                        print(board.board_get())
+                        print(board.board_x, board.board_y)
+                        if board.board_get() == "A7":
+                            print("Clicked on A7")
+                            position = board.board_get()
+                            for i in white_pawns:
+                                if isinstance(i, WhitePawn):
+                                    print("White Pawn at", board.board_get())
+                                    print("Where to move?")
+                                    if event.type == pygame.MOUSEBUTTONDOWN:
+                                        x, y = event.pos
+                                        print("Moving to", board.board_get())
                 # Check if clicked on any pieces
         pygame.display.flip()

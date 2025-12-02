@@ -235,6 +235,22 @@ class Board:
             return "G8"
         elif self.board_x <= 800 and self.board_y <= 75:
             return "H8"
+        elif self.board_x <= 100 and self.board_y <= 150:
+            return "A7"
+        elif self.board_x <= 200 and self.board_y <= 150:
+            return "B7"
+        elif self.board_x <= 300 and self.board_y <= 150:
+            return "C7"
+        elif self.board_x <= 400 and self.board_y <= 150:
+            return "D7"
+        elif self.board_x <= 500 and self.board_y <= 150:
+            return "E7"
+        elif self.board_x <= 600 and self.board_y <= 150:
+            return "F7"
+        elif self.board_x <= 700 and self.board_y <= 150:
+            return "G7"
+        elif self.board_x <= 800 and self.board_y <= 150:
+            return "H7"
 
 
 class ChessGame:
@@ -286,9 +302,3 @@ class ChessGame:
         self.black_pieces.append(BlackPawn("Black", "F7"))
         self.black_pieces.append(BlackPawn("Black", "G7"))
         self.black_pieces.append(BlackPawn("Black", "H7"))
-
-    def get_piece_at(self, position):
-        for piece in self.white_pieces + self.black_pieces:
-            if piece.get_position() == position:
-                return piece
-        return None
