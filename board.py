@@ -31,7 +31,6 @@ class ChessPiece(ABC):
         self.size = (75, 75)
 
     def load_image(self, image_path):
-        """加载并缩放棋子图片"""
         image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(image, self.size)
         return self.image
@@ -65,7 +64,7 @@ class Pawn(ChessPiece):
     def __init__(self, color: PieceColor, position: str):
         super().__init__(color, PieceType.PAWN, position)
         image_name = "pawn.png" if color == PieceColor.WHITE else "pawn1.png"
-        self.load_image(f"chess_resourses/{image_name}")
+        self.load_image(f"chess_resourses\\{image_name}")
 
     def can_move_to(self, new_position, board_state):
         current_file = self.position[0]
