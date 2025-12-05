@@ -113,6 +113,36 @@ class Knight(ChessPiece):
         return (dx == 1 and dy == 2) or (dx == 2 and dy == 1)
 
 
+class Bishop(ChessPiece):
+    def __init__(self, color: PieceColor, position: str):
+        super().__init__(color, PieceType.KNIGHT, position)
+        image_name = "bishop.png" if color == PieceColor.WHITE else "bishop1.png"
+        self.load_image(f"chess_resourses\\{image_name}")
+
+    def can_move_to(self, new_position, board_state):
+        pass
+
+
+class Queen(ChessPiece):
+    def __init__(self, color: PieceColor, position: str):
+        super().__init__(color, PieceType.KNIGHT, position)
+        image_name = "queen.png" if color == PieceColor.WHITE else "queen1.png"
+        self.load_image(f"chess_resourses\\{image_name}")
+
+    def can_move_to(self, new_position, board_state):
+        pass
+
+
+class King(ChessPiece):
+    def __init__(self, color: PieceColor, position: str):
+        super().__init__(color, PieceType.KNIGHT, position)
+        image_name = "king.png" if color == PieceColor.WHITE else "king1.png"
+        self.load_image(f"chess_resourses\\{image_name}")
+
+    def can_move_to(self, new_position, board_state):
+        pass
+
+
 class ChessGame:
     def __init__(self, board_x=0, board_y=0):
         self.board_x = board_x

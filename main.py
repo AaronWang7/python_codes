@@ -27,7 +27,6 @@ image_rect = start_t.get_rect(topleft=(start_x, start_y))
 pos_front = pygame.font.Font('freesansbold.ttf', 32)
 
 bgm_1()
-
 clicked = False
 
 
@@ -48,6 +47,7 @@ while running:
             if image_rect.collidepoint(mouse_pos) and clicked == False:
                 print("yes")
                 clicked = True
+                bgm_2()
                 run_board()
                 clicked = False
 

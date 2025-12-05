@@ -4,9 +4,8 @@ min = 0
 print("Enter in min:")
 timer = int(input(":"))
 for i in range((timer)*60):
-    time.sleep(0.1)
-    if sec <= 10:
-        sec -= 1
+    time.sleep(1)
+    sec -= 1
     if sec <= 0:
         min += 1
         sec = 60
