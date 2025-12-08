@@ -1,7 +1,7 @@
 # Chess Game (Pygame Project)
 
 A chess game built with **Python + Pygame** as my final project for school.  
-Includes animations, background music, and AI opponent.
+Includes animations, background music, and basic AI opponent.
 
 ---
 

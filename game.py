@@ -3,7 +3,7 @@ import time
 from board import *
 from sounds import *
 chess_pawns = []
-
+# Adding chess pieces
 for i in range(8):
     chess_pawns.append(Pawn(i*100, 0))
 
@@ -30,6 +30,7 @@ for i in range(2):
 chess_bishops = []
 for i in range(2):
     chess_bishops.append(Bishop(i*100), 0)
+# Display chess pieces
 
 
 def run_board():
@@ -42,6 +43,12 @@ def run_board():
             Knight.draw(0)
         for chess_rook in chess_rook:
             Rook.draw(0)
+        for chess_queen in chess_queens:
+            Queen.draw(0)
+        for chess_king in chess_kings:
+            King.draw(0)
+        for chess_bishop in chess_bishops:
+            Bishop.draw(0)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False

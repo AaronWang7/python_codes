@@ -5,10 +5,14 @@ from enum import Enum
 
 pygame.init()
 
+# Piece color in Enum form
+
 
 class PieceColor(Enum):
     WHITE = 1
     BLACK = 2
+
+# Piece type in Enum form
 
 
 class PieceType(Enum):
@@ -18,6 +22,8 @@ class PieceType(Enum):
     BISHOP = "bishop"
     QUEEN = "queen"
     KING = "king"
+
+# Parent class
 
 
 class ChessPiece(ABC):
@@ -59,6 +65,8 @@ class ChessPiece(ABC):
     def move_to(self, new_position):
         self.position = new_position
 
+# Child class (pawn)
+
 
 class Pawn(ChessPiece):
     def __init__(self, color: PieceColor, position: str):
@@ -83,6 +91,8 @@ class Pawn(ChessPiece):
                     return True
         return False
 
+# Child class (Rook)
+
 
 class Rook(ChessPiece):
     def __init__(self, color: PieceColor, position: str):
@@ -93,6 +103,8 @@ class Rook(ChessPiece):
     def can_move_to(self, new_position, board_state):
         return (self.position[0] == new_position[0] or
                 self.position[1] == new_position[1])
+
+# Child class (Knight)
 
 
 class Knight(ChessPiece):
@@ -112,6 +124,8 @@ class Knight(ChessPiece):
 
         return (dx == 1 and dy == 2) or (dx == 2 and dy == 1)
 
+# Child class (Bishop)
+
 
 class Bishop(ChessPiece):
     def __init__(self, color: PieceColor, position: str):
@@ -121,6 +135,8 @@ class Bishop(ChessPiece):
 
     def can_move_to(self, new_position, board_state):
         pass
+
+# Child class (Queen)
 
 
 class Queen(ChessPiece):
@@ -132,6 +148,8 @@ class Queen(ChessPiece):
     def can_move_to(self, new_position, board_state):
         pass
 
+# Child class (King)
+
 
 class King(ChessPiece):
     def __init__(self, color: PieceColor, position: str):
@@ -141,6 +159,8 @@ class King(ChessPiece):
 
     def can_move_to(self, new_position, board_state):
         pass
+
+# Game setup
 
 
 class ChessGame:

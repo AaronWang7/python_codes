@@ -2,6 +2,7 @@ import pygame
 import sys
 from sounds import *
 from game import *
+from timer import *
 
 
 pygame.init()
@@ -12,11 +13,12 @@ SCREEN_Y = 600
 screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
 pygame.display.set_caption("My Pygame Game")
 back_ground = pygame.image.load("chess_resourses/board.png").convert()
-background = pygame.transform.scale(back_ground, (800, 600))  # 调整到窗口大小
+background = pygame.transform.scale(
+    back_ground, (800, 600))  # Resize background
 start = pygame.image.load("chess_resourses/image copy.png").convert_alpha()
 start.set_colorkey((255, 255, 255))
-
-start_t = pygame.transform.scale(start, (150, 100))
+# Set up
+start_t = pygame.transform.scale(start, (270, 170))
 back_groundmusic1 = True
 back_groundmusic2 = False
 start_width = start_t.get_width()
@@ -25,12 +27,13 @@ start_x = SCREEN_X/2 - start_width/2
 start_y = SCREEN_Y/2 - start_hight/2
 image_rect = start_t.get_rect(topleft=(start_x, start_y))
 pos_front = pygame.font.Font('freesansbold.ttf', 32)
-
+# Plays music
 bgm_1()
 clicked = False
 
 
 running = True
+# While loop that displays the starting screen
 while running:
     mouse_pos = pygame.mouse.get_pos()
     screen.blit(background, (0, 0))
@@ -47,10 +50,12 @@ while running:
             if image_rect.collidepoint(mouse_pos) and clicked == False:
                 print("yes")
                 clicked = True
+                # Plays music two
                 bgm_2()
+                # Call run board from a different page
                 run_board()
+                timer()
                 clicked = False
-
             else:
                 pass
 
