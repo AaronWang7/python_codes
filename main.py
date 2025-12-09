@@ -54,7 +54,6 @@ while running:
                 bgm_2()
                 # Call run board from a different page
                 run_board()
-                timer()
                 clicked = False
             else:
                 pass
