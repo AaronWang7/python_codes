@@ -96,15 +96,16 @@ for i in range(1):
     yy = 525
     black_queens.append(BlackQueen(0, xx, yy))
 
+
 def run_board():
     from main import screen  # 导入main.py的屏幕
-    
+
     bgm_2()
     run = True
-    
+
     while run:
         board.board_set(screen)  # 传入screen
-        
+
         for white_p in white_pawns:
             white_p.pawn1_set(screen)  # 传入screen
         for black_p in black_pawns:
@@ -133,20 +134,25 @@ def run_board():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-                return  
-            
+                return
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     run = False
-                    return 
-            
+                    return
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
                 print("Clicked:", x, y)
-                
+
                 board.board_x = x
                 board.board_y = y
                 pos = board.board_get()
                 print("Piece position:", pos)
+                if y <= 75:
+                    if x <= 100:
+                        xx = x + 100
+                        yy = y + 75
+                        white_pawns.append(WhitePawn(0, xx, yy))
 
         pygame.display.update()

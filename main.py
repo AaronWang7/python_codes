@@ -31,6 +31,18 @@ pos_front = pygame.font.Font('freesansbold.ttf', 32)
 bgm_1()
 clicked = False
 
+game = ChessGame
+white_knight = game.get_piece_at("White", "B1")  # Knight at B1
+black_pawn = game.get_piece_at("Black", "D7")    # Pawn at D7
+white_pawn = game.get_piece_at("White", "D2")    # Pawn at D2
+black_bishop = game.get_piece_at("Black", "C8")   # Bishop at C8
+white_rook = game.get_piece_at("White", "A1")
+print(game.get_piece_info(white_knight, white_knight))
+print(game.get_piece_info(black_pawn, black_pawn))
+print(game.get_piece_info(white_pawn, white_pawn))
+print(game.get_piece_info(black_bishop, black_bishop))
+print(game.get_piece_info(white_rook, white_rook))
+
 
 running = True
 # While loop that displays the starting screen
