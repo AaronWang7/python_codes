@@ -134,11 +134,11 @@ def run_board():
             
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
-                print("点击:", x, y)
+                print("Clicked:", x, y)
                 
                 board.board_x = x
                 board.board_y = y
                 pos = board.board_get()
-                print("棋盘位置:", pos)
+                print("Piece posistion:", pos)
 
         pygame.display.update()
