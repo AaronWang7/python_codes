@@ -97,40 +97,48 @@ for i in range(1):
     black_queens.append(BlackQueen(0, xx, yy))
 
 def run_board():
+    from main import screen  # 导入main.py的屏幕
+    
     bgm_2()
     run = True
     
     while run:
-        board.board_set()
+        board.board_set(screen)  # 传入screen
         
         for white_p in white_pawns:
-            white_p.pawn1_set()
+            white_p.pawn1_set(screen)  # 传入screen
         for black_p in black_pawns:
-            black_p.pawn2_set()
+            black_p.pawn2_set(screen)
         for white_b in white_bishops:
-            white_b.bishop1_set()
+            white_b.bishop1_set(screen)
         for black_b in black_bishops:
-            black_b.bishop2_set()
+            black_b.bishop2_set(screen)
         for white_r in white_rooks:
-            white_r.rook1_set()
+            white_r.rook1_set(screen)
         for black_r in black_rooks:
-            black_r.rook2_set()
+            black_r.rook2_set(screen)
         for white_kn in white_knights:
-            white_kn.knight1_set()
+            white_kn.knight1_set(screen)
         for black_kn in black_knights:
-            black_kn.knight2_set()
+            black_kn.knight2_set(screen)
         for white_k in white_kings:
-            white_k.king1_set()
+            white_k.king1_set(screen)
         for black_k in black_kings:
-            black_k.king2_set()
+            black_k.king2_set(screen)
         for white_q in white_queens:
-            white_q.queen1_set()
+            white_q.queen1_set(screen)
         for black_q in black_queens:
-            black_q.queen2_set()
+            black_q.queen2_set(screen)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+                return  
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    run = False
+                    return 
             
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
@@ -139,6 +147,6 @@ def run_board():
                 board.board_x = x
                 board.board_y = y
                 pos = board.board_get()
-                print("Piece posistion:", pos)
+                print("Piece position:", pos)
 
         pygame.display.update()
