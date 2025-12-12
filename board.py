@@ -445,6 +445,12 @@ class ChessGame:
         self.black_pieces.append(BlackPawn("Black", "G7", 0))
         self.black_pieces.append(BlackPawn("Black", "H7", 0))
 
+    def ret(self) -> str:
+        return self.white_pieces
+
+    def __str__(self) -> str:
+        return self.white_pieces
+
     def move_piece(self, piece, new_pos):
         # Move a piece to a new position if the move is valid
         if piece and piece.can_move_to(new_pos):

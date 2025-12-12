@@ -148,11 +148,19 @@ def run_board():
                 board.board_x = x
                 board.board_y = y
                 pos = board.board_get()
-                chess_game.setup_pieces()
-                print("Piece position:", pos)
-                if pos == "A1":
+                chess_game.ret()
+
+                for i in chess_game.ret():
+                    if "A2" in chess_game.ret():
+                        print("Founded!")
+
+                # int("Piece position:", pos)
+                if pos == "A7":
                     time.sleep(1)
-                    white_pawns.append(WhitePawn(0, xx, yy))
+                    white_pawns.pop((0))
+                    white_pawns.append(WhitePawn(0, 0, 150))
+                    # print({chess_game.ret()})
+
                     print(xx, yy)
                     for white_p in white_pawns:
                         white_p.pawn1_set(screen)
