@@ -1,167 +1,88 @@
+import pygame
 import time
 from board import *
 from sounds import *
-
-board = Board(0, x=0, y=0)
-
-white_pawns = []
-pawn_x = 0
-for i in range(8):
-    xx = pawn_x
-    pawn_x = pawn_x + 100
-    yy = 70
-    white_pawns.append(WhitePawn(0, xx, yy))
-
-black_pawns = []
-pawn_x = 0
-for i in range(8):
-    xx = pawn_x
-    pawn_x = pawn_x + 100
-    yy = 445
-    black_pawns.append(BlackPawn(0, xx, yy))
-
-white_bishops = []
-bishop_x = 200
-for i in range(2):
-    xx = bishop_x
-    bishop_x = bishop_x + 300
-    yy = 0
-    white_bishops.append(WhiteBishop(0, xx, yy))
-
-black_bishops = []
-bishop1_x = 200
-for i in range(2):
-    xx = bishop1_x
-    bishop1_x = bishop1_x + 300
-    yy = 525
-    black_bishops.append(BlackBishop(0, xx, yy))
-
-white_rooks = []
-rook_x = 0
-for i in range(2):
-    xx = rook_x
-    rook_x = rook_x + 700
-    yy = 0
-    white_rooks.append(WhiteRook(0, xx, yy))
-
-black_rooks = []
-rook_x = 0
-for i in range(2):
-    xx = rook_x
-    rook_x = rook_x + 700
-    yy = 525
-    black_rooks.append(BlackRook(0, xx, yy))
-
-white_knights = []
-knight_x = 100
-for i in range(2):
-    xx = knight_x
-    knight_x = knight_x + 500
-    yy = 0
-    white_knights.append(WhiteKnight(0, xx, yy))
-
-black_knights = []
-knight_x = 100
-for i in range(2):
-    xx = knight_x
-    knight_x = knight_x + 500
-    yy = 525
-    black_knights.append(BlackKnight(0, xx, yy))
-
-white_kings = []
-king_x = 300
-for i in range(1):
-    xx = king_x
-    yy = 0
-    white_kings.append(WhiteKing(0, xx, yy))
-
-black_kings = []
-king_x = 300
-for i in range(1):
-    xx = king_x
-    yy = 525
-    black_kings.append(BlackKing(0, xx, yy))
-
-white_queens = []
-queen_x = 400
-for i in range(1):
-    xx = queen_x
-    yy = 0
-    white_queens.append(WhiteQueen(0, xx, yy))
-
-black_queens = []
-queen_x = 400
-for i in range(1):
-    xx = queen_x
-    yy = 525
-    black_queens.append(BlackQueen(0, xx, yy))
-
+from animation import *
+from ai import *
 
 def run_board():
-    from main import screen  # 导入main.py的屏幕
-
+    from main import screen
+    
+    game = ChessGame()
+    animation = Animation()
+    ai_player = SimpleAI("Black")
+    
+    clock = pygame.time.Clock()
+    selected_piece = None
+    game_over = False
+    winner = None
+    
     bgm_2()
     run = True
-
+    
     while run:
-        board.board_set(screen)  # 传入screen
-
-        for white_p in white_pawns:
-            white_p.pawn1_set(screen)  # 传入screen
-        for black_p in black_pawns:
-            black_p.pawn2_set(screen)
-        for white_b in white_bishops:
-            white_b.bishop1_set(screen)
-        for black_b in black_bishops:
-            black_b.bishop2_set(screen)
-        for white_r in white_rooks:
-            white_r.rook1_set(screen)
-        for black_r in black_rooks:
-            black_r.rook2_set(screen)
-        for white_kn in white_knights:
-            white_kn.knight1_set(screen)
-        for black_kn in black_knights:
-            black_kn.knight2_set(screen)
-        for white_k in white_kings:
-            white_k.king1_set(screen)
-        for black_k in black_kings:
-            black_k.king2_set(screen)
-        for white_q in white_queens:
-            white_q.queen1_set(screen)
-        for black_q in black_queens:
-            black_q.queen2_set(screen)
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 return
-
+            
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     run = False
                     return
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                x, y = event.pos
-                print("Clicked:", x, y)
-                chess_game = ChessGame()
-                board.board_x = x
-                board.board_y = y
-                pos = board.board_get()
-                chess_game.ret()
-
-                for i in chess_game.ret():
-                    if "A2" in chess_game.ret():
-                        print("Founded!")
-
-                # int("Piece position:", pos)
-                if pos == "A7":
-                    time.sleep(1)
-                    white_pawns.pop((0))
-                    white_pawns.append(WhitePawn(0, 0, 150))
-                    # print({chess_game.ret()})
-
-                    print(xx, yy)
-                    for white_p in white_pawns:
-                        white_p.pawn1_set(screen)
+            
+            if not game_over and game.current_turn == "White":
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    x, y = event.pos
+                    position = coords_to_pos(x, y)
+                    
+                    if position:
+                        clicked_piece = game.get_piece_at(position)
+                        
+                        if selected_piece:
+                            if clicked_piece and clicked_piece.color == "White":
+                                selected_piece = clicked_piece
+                            else:
+                                if game.move_piece(selected_piece, position):
+                                    selected_piece = None
+                                    
+                                    if game.is_checkmate():
+                                        game_over = True
+                                        winner = "White"
+                                        animation.show_checkmate(screen)
+                                        animation.show_win(winner, screen)
+                        else:
+                            if clicked_piece and clicked_piece.color == "White":
+                                selected_piece = clicked_piece
+        
+        screen.fill((0, 0, 0))
+        
+        board_img = pygame.image.load("chess_resourses/board.png").convert()
+        board_img = pygame.transform.scale(board_img, (800, 600))
+        screen.blit(board_img, (0, 0))
+        
+        game.draw_all_pieces(screen)
+        
+        if selected_piece:
+            pygame.draw.rect(screen, (255, 255, 0), 
+                           (selected_piece.x, selected_piece.y, 100, 75), 3)
+        
+        if not game_over and game.current_turn == "Black":
+            ai_player.draw_ai_thinking(screen)
+            pygame.display.update()
+            pygame.time.delay(500)
+            
+            if ai_player.make_move(game):
+                if game.is_checkmate():
+                    game_over = True
+                    winner = "Black"
+                    animation.show_checkmate(screen)
+                    animation.show_win(winner, screen)
+        
+        if game_over:
+            font = pygame.font.Font('freesansbold.ttf', 36)
+            text = font.render("Game Over! Press ESC to exit", True, (255, 255, 255))
+            screen.blit(text, (200, 500))
+        
         pygame.display.update()
+        clock.tick(60)
