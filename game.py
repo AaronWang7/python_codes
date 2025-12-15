@@ -114,7 +114,7 @@ def run_board():
         if game.current_turn == "White":
             turn_color = (0, 0, 255)
         else:
-            turn_color = (0, 0, 0)
+            turn_color = (255, 0, 0)
 
         turn_text = font.render(
             f"Turn: {game.current_turn}", True, turn_color)
