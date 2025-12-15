@@ -3,6 +3,8 @@ from board import *
 from sounds import *
 from animation import Animation
 
+# Run Board function
+
 
 def run_board():
     from main import screen
@@ -33,25 +35,25 @@ def run_board():
     run = True
     clock = pygame.time.Clock()
 
-    bgm_2()
+    bgm_2()  # Plays bgm 2
 
     while run:
-
+        # Get event
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 return
-
+            # If enters the key "Esc" - Return s to main page
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     run = False
                     return
-
+            # If game didn't end and it's White Piece's turn
             if not game.game_over and game.current_turn == "White":
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    x, y = event.pos
-                    col = x // 100
-                    row = y // 75
+                if event.type == pygame.MOUSEBUTTONDOWN:  # If clicked
+                    x, y = event.pos  # Store it's location
+                    col = x // 100  # column
+                    row = y // 75  # row
 
                     if 0 <= col < 8 and 0 <= row < 8:
                         board_col = chr(ord('A') + col)
@@ -108,9 +110,9 @@ def run_board():
 
         font = pygame.font.Font('freesansbold.ttf', 24)
 
-        turn_color = (255, 255, 255)
+        turn_color = (0, 0, 255)
         if game.current_turn == "White":
-            turn_color = (255, 255, 255)
+            turn_color = (0, 0, 255)
         else:
             turn_color = (0, 0, 0)
 

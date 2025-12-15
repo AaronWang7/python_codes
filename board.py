@@ -1,5 +1,7 @@
 import pygame
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod  # abstractmethod
+
+# Class - ChessPiece(uses ABC, - so child class can get it's...)
 
 
 class ChessPiece(ABC):
@@ -31,6 +33,8 @@ class ChessPiece(ABC):
     def draw(self, screen):
         pass
 
+# WhitePawn Child class of ChessPiece
+
 
 class WhitePawn(ChessPiece):
     def __init__(self, position):
@@ -56,6 +60,8 @@ class WhitePawn(ChessPiece):
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+
+# BlackPawn Child class of ChessPiece
 
 
 class BlackPawn(ChessPiece):
@@ -83,6 +89,8 @@ class BlackPawn(ChessPiece):
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
 
+# WhiteBishop Child class of ChessPiece
+
 
 class WhiteBishop(ChessPiece):
     def __init__(self, position):
@@ -97,6 +105,8 @@ class WhiteBishop(ChessPiece):
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+
+# BlackBishop Child class of ChessPiece
 
 
 class BlackBishop(ChessPiece):
@@ -113,6 +123,8 @@ class BlackBishop(ChessPiece):
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
 
+# WhiteRook Child class of ChessPiece
+
 
 class WhiteRook(ChessPiece):
     def __init__(self, position):
@@ -126,6 +138,8 @@ class WhiteRook(ChessPiece):
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
 
+# BlackRook Child class of ChessPiece
+
 
 class BlackRook(ChessPiece):
     def __init__(self, position):
@@ -138,6 +152,8 @@ class BlackRook(ChessPiece):
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+
+# WhiteKnight Child class of ChessPiece
 
 
 class WhiteKnight(ChessPiece):
@@ -154,6 +170,8 @@ class WhiteKnight(ChessPiece):
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
 
+# BlackKnight Child class of ChessPiece
+
 
 class BlackKnight(ChessPiece):
     def __init__(self, position):
@@ -168,6 +186,8 @@ class BlackKnight(ChessPiece):
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+
+# WhiteKing Child class of ChessPiece
 
 
 class WhiteKing(ChessPiece):
@@ -184,6 +204,8 @@ class WhiteKing(ChessPiece):
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
 
+# BlackKing Child class of ChessPiece
+
 
 class BlackKing(ChessPiece):
     def __init__(self, position):
@@ -198,6 +220,8 @@ class BlackKing(ChessPiece):
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+
+# WhiteQueen Child class of ChessPiece
 
 
 class WhiteQueen(ChessPiece):
@@ -215,6 +239,8 @@ class WhiteQueen(ChessPiece):
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+
+# BlackQueen Child class of ChessPiece
 
 
 class BlackQueen(ChessPiece):
@@ -243,6 +269,7 @@ class ChessGame:
         self.game_over = False
         self.winner = None
         self.setup_pieces()
+    # Set up piece locations
 
     def setup_pieces(self):
 

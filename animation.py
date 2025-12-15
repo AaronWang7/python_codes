@@ -32,6 +32,6 @@ class Animation:
             text_rect = text.get_rect(center=(400, 250))
             screen.blit(text, text_rect)
             pygame.display.update()
-            pygame.time.delay(50)
+            pygame.time.delay(25)
 
-        pygame.time.delay(2000)
+        pygame.time.delay(1000)

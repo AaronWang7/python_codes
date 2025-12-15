@@ -1,17 +1,17 @@
 # Chess Game (Pygame Project)
 
-A chess game built with **Python + Pygame** as my final project for school.  
-Includes animations, background music, and basic AI opponent.
+A chess game built with **Pygame** as my final project for school.  
+Includes simple Win animations, background music that changes when different events happend, and basic AI opponent(Random placing Pieces).
 
 ---
 
 ## 🎮 Features
 
-- Player vs AI mode  
-- Animated piece movement  
-- Check and Checkmate effects  
-- Background music that changes based on game state  
-- Screen shake and text effects when checkmate occurs  
+- Player vs AI mode 
+- Animated Wining text
+- Checkmate Animation 
+- Background music that changes  
+- Effects when checkmate occurs  
 
 ---
 
