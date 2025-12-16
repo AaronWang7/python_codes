@@ -27,4 +27,6 @@ Includes simple Win animations, background music that changes when different eve
 
 1. Nostalgic Piano - Copyright Free Music ＆ SFX from <https://yoyosound.com>
 2. Suspenseful Investigation - Copyright Free Music ＆ SFX from <https://yoyosound.com>
+3. I referred to several online chess game tutorials to learn the basic structure, such as Python chess tutorials. This website helped me understand: the basic game structure, the logic patterns of piece movement, and the format of the chessboard, etc. https://thepythoncode.com/article/make-a-chess-game-using-pygame-in-python
+
 
