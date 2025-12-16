@@ -5,7 +5,7 @@ Includes simple Win animations, background music that changes when different eve
 
 ---
 
-## 🎮 Features
+##  Features
 
 - Player vs AI mode 
 - Animated Wining text
@@ -15,7 +15,7 @@ Includes simple Win animations, background music that changes when different eve
 
 ---
 
-## ⚙️ How to Run
+##  How to Run
 
 1. Make sure Python 3 and Pygame are installed:
 
@@ -27,3 +27,4 @@ Includes simple Win animations, background music that changes when different eve
 
 1. Nostalgic Piano - Copyright Free Music ＆ SFX from <https://yoyosound.com>
 2. Suspenseful Investigation - Copyright Free Music ＆ SFX from <https://yoyosound.com>
+
