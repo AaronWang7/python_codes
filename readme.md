@@ -5,7 +5,7 @@ Includes simple Win animations, background music that changes when different eve
 
 ---
 
-## 🎮 Features
+##  Features
 
 - Player vs AI mode 
 - Animated Wining text
@@ -15,7 +15,7 @@ Includes simple Win animations, background music that changes when different eve
 
 ---
 
-## ⚙️ How to Run
+##  How to Run
 
 1. Make sure Python 3 and Pygame are installed:
 
@@ -27,3 +27,6 @@ Includes simple Win animations, background music that changes when different eve
 
 1. Nostalgic Piano - Copyright Free Music ＆ SFX from <https://yoyosound.com>
 2. Suspenseful Investigation - Copyright Free Music ＆ SFX from <https://yoyosound.com>
+3. I referred to several online chess game tutorials to learn the basic structure, such as Python chess tutorials. This website helped me understand: the basic game structure, the logic patterns of piece movement, and the format of the chessboard, etc. https://thepythoncode.com/article/make-a-chess-game-using-pygame-in-python
+
+
